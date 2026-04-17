@@ -1,0 +1,24 @@
+nohup: ignoring input
+ * Serving Flask app 'TicketApi'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://10.0.0.4:5002
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 652-786-070
+81.92.27.231 - - [17/Apr/2026 09:40:31] "OPTIONS /tickets HTTP/1.1" 200 -
+81.92.27.231 - - [17/Apr/2026 09:40:32] "POST /tickets HTTP/1.1" 201 -
+81.92.27.231 - - [17/Apr/2026 09:40:32] "GET /tickets HTTP/1.1" 200 -
+81.92.27.231 - - [17/Apr/2026 09:40:32] "POST /tickets HTTP/1.1" 201 -
+81.92.27.231 - - [17/Apr/2026 09:40:32] "GET /tickets HTTP/1.1" 200 -
+81.92.27.231 - - [17/Apr/2026 09:41:24] "GET /tickets HTTP/1.1" 200 -
+81.92.27.231 - - [17/Apr/2026 09:41:28] "GET /tickets HTTP/1.1" 200 -
+81.92.27.231 - - [17/Apr/2026 09:41:35] "GET /apidocs/ HTTP/1.1" 200 -
+81.92.27.231 - - [17/Apr/2026 09:41:35] "GET /flasgger_static/swagger-ui.css HTTP/1.1" 304 -
+81.92.27.231 - - [17/Apr/2026 09:41:35] "GET /flasgger_static/swagger-ui-bundle.js HTTP/1.1" 304 -
+81.92.27.231 - - [17/Apr/2026 09:41:35] "GET /flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1" 304 -
+81.92.27.231 - - [17/Apr/2026 09:41:35] "GET /flasgger_static/lib/jquery.min.js HTTP/1.1" 304 -
+81.92.27.231 - - [17/Apr/2026 09:41:36] "GET /apispec_1.json HTTP/1.1" 200 -

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket System</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 50px auto; padding: 20px; }
+        input, select, textarea { width: 100%; padding: 8px; margin: 5px 0 15px 0; }
+        button { background: #0078d4; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .ticket { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .open { border-left: 4px solid green; }
+        .closed { border-left: 4px solid red; }
+    </style>
+</head>
+<body>
+    <h1>Ticket System</h1>
+    <h2>Opret ny ticket</h2>
+    <input type="text" id="customer_id" placeholder="Dit navn">
+    <input type="text" id="subject" placeholder="Emne">
+    <textarea id="message" placeholder="Beskriv problemet"></textarea>
+    <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+    </select>
+    <button onclick="createTicket()">Opret Ticket</button>
+    <h2>Alle Tickets</h2>
+    <div id="tickets"></div>
+    <script>
+        const API = "http://51.103.212.67:5002";
+        async function loadTickets() {
+            const res = await fetch(API + "/tickets");
+            const tickets = await res.json();
+            document.getElementById("tickets").innerHTML = tickets.map(t =>
+                `<div class="ticket ${t.status}">
+                    <b>#${t.id} - ${t.subject}</b> 
+                    <span style="float:right">${t.priority} | ${t.status}</span>
+                    <p>${t.message}</p>
+                    <small>Kunde: ${t.customer_id} | ${t.created_at}</small>
+                    ${t.status === 'open' ? `<button onclick="closeTicket(${t.id})">Luk ticket</button>` : ''}
+                </div>`
+            ).join('');
+        }
+        async function createTicket() {
+            await fetch(API + "/tickets", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    customer_id: document.getElementById("customer_id").value,
+                    subject: document.getElementById("subject").value,
+                    message: document.getElementById("message").value,
+                    priority: document.getElementById("priority").value
+                })
+            });
+            loadTickets();
+        }
+        async function closeTicket(id) {
+            await fetch(API + "/tickets/" + id + "/close", {method: "PUT"});
+            loadTickets();
+        }
+        loadTickets();
+    </script>
+</body>
+</html>
