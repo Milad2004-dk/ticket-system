@@ -26,7 +26,7 @@
     <h2>Alle Tickets</h2>
     <div id="tickets"></div>
     <script>
-        const API = "http://51.103.212.67:5002";
+        const API = "https://milad-gbhagyf9dwdgdehw.switzerlandnorth-01.azurewebsites.net";
         async function loadTickets() {
             const res = await fetch(API + "/tickets");
             const tickets = await res.json();
