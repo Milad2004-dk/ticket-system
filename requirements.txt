@@ -1,5 +1,5 @@
 flask
 flask-cors
 flasgger
-pymysql
+mysql-connector-python
 gunicorn
