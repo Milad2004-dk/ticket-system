@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, send_file
 from flask_cors import CORS
 from flasgger import Swagger
 import mysql.connector
@@ -86,3 +86,7 @@ def delete_ticket(ticket_id):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=True)
+
+@app.route('/')
+def index():
+    return send_file('index.html')
